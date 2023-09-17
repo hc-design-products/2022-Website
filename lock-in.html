@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/hc-design-96x96.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>LOCK-iN</title>
+  <link rel="stylesheet" href="assets/dev-icons/css/devicon.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/animatecss/animate.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link href="assets/fonts/style.css" rel="stylesheet">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+      <style>
+      /* CSS code for the loader */
+      .lds-circle {
+        display: inline-block;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateZ(1px);
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+      }
+      
+      .lds-circle.fade-out {
+        opacity: 0;
+      }
+      
+      .lds-circle > div {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        background: silver;
+        animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      }
+
+      @keyframes lds-circle {
+        0%, 100% {
+          animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+        }
+        0% {
+          transform: rotateY(0deg);
+        }
+        50% {
+          transform: rotateY(1800deg);
+          animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+        }
+        100% {
+          transform: rotateY(3600deg);
+        }
+      }
+
+      /* CSS code for the overlay */
+      #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff; /* white background */
+        z-index: 9998; /* make sure the overlay is behind the loader */
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+      }
+      
+      #overlay.fade-out {
+        opacity: 0;
+      }
+    </style>
+
+
+
+
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+</head>
+<body>
+  <div id="loading-animation">
+    <div id="overlay"></div>
+    <div class="lds-circle"><div></div></div>
+    </div>
+
+<script>
+      // Wait for the page to load
+      window.onload = function() {
+        // Get the loader and overlay elements
+        const loader = document.querySelector('.lds-circle');
+        const overlay = document.querySelector('#overlay');
+        
+        // Add the "fade-out" class to the loader and overlay elements
+        loader.classList.add('fade-out');
+        overlay.classList.add('fade-out');
+        
+        // Wait for the opacity transition to complete
+        setTimeout(function() {
+          // Remove the loader and overlay elements from the DOM
+          loader.parentNode.removeChild(loader);
+          overlay.parentNode.removeChild(overlay);
+        }, 500);
+      }
+    </script>
+  <section data-bs-version="5.1" class="menu menu3 cid-tHNYPB5mEZ" once="menu" id="menu3-h2">
+
+    
+
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        
+
+        
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="index.html">
+                        <img src="assets/images/hc-design-96x96.webp" alt="" style="height: 3rem;">
+                    </a>
+                </span>
+                
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="projects.html" onclick="scrollToPosition()">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="about.html">About</a>
+                    </li></ul>
+                
+                
+            </div>
+        </div>
+       
+
+    </nav>
+    
+    <div class="circle"></div>
+    
+     
+    
+
+
+
+<script>
+// Get the element with class name .circle"
+var iconElement = document.querySelector('.circle');
+
+// Set the initial position of the tracking object
+var startX = 0;
+var startY = 0;
+
+// Set the target position of the tracking object
+var targetX = 0;
+var targetY = 0;
+
+// Set a flag to indicate if the tracking should start or not
+var shouldStartTracking = false;
+
+// Set a flag to indicate if the tracking is in progress or not
+var isTrackingInProgress = false;
+
+// Function to update the position of the tracking object smoothly
+function updatePosition() {
+    // Calculate the distance between the current position and the target position
+    var distanceX = (targetX - startX) * 0.05; // Update with a percentage of window width
+    var distanceY = (targetY - startY) * 0.05; // Update with a percentage of window height
+
+    // Update the current position with the calculated distance
+    startX += distanceX;
+    startY += distanceY;
+
+    // Set the position of the icon element
+    iconElement.style.left = startX + 'px';
+    iconElement.style.top = startY + 'px';
+
+    // Check if the tracking is complete
+    if (Math.abs(distanceX) < 0.1 && Math.abs(distanceY) < 0.1) {
+        isTrackingInProgress = false;
+    } else {
+        // Request the next frame for smooth animation
+        requestAnimationFrame(updatePosition);
+    }
+}
+
+// Add event listener for mousemove event
+document.addEventListener('mousemove', function(event) {
+    // Adjust for the scroll position of the page
+    var scrollX = window.scrollX || window.pageXOffset;
+    var scrollY = window.scrollY || window.pageYOffset;
+
+    // If the tracking should start and it's not already in progress, set the target position and start the tracking
+    if (shouldStartTracking && !isTrackingInProgress) {
+        iconElement.style.display = 'block';
+        targetX = event.clientX + scrollX;
+        targetY = event.clientY + scrollY;
+        startX = iconElement.offsetLeft;
+        startY = iconElement.offsetTop;
+        isTrackingInProgress = true;
+        updatePosition();
+    } else {
+        // Update the target position in real-time
+        targetX = event.clientX + scrollX;
+        targetY = event.clientY + scrollY;
+    }
+});
+
+// Delay the start of tracking by 2 seconds (2000 milliseconds)
+setTimeout(function() {
+    shouldStartTracking = true;
+}, 1500);
+
+//enlarge
+const circle = document.querySelector(".circle");
+
+ circle.addEventListener("transitionend", function() {
+ circle.classList.remove("enlarged");
+});
+
+
+document.addEventListener("click", function() {
+  circle.classList.add("enlarged");
+});
+
+
+//HOVER
+
+const links = document.querySelectorAll("a");
+
+
+
+circle.style.pointerEvents = "none"; // disable pointer events on the .circle element
+
+links.forEach(link => {
+  link.addEventListener("mouseenter", function() {
+    circle.classList.add("hover");
+  });
+
+  link.addEventListener("mouseleave", function() {
+    circle.classList.remove("hover");
+  });
+});
+
+</script>
+
+
+    
+
+</section>
+
+<section data-bs-version="5.1" class="header9 cid-tEXXg3ZNKh" id="header9-c3">
+
+    
+
+    
+    
+
+    <div class="text-center container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <div class="image-wrap mb-4">
+                    <img src="assets/images/hero-with-os5-1475x971.webp" alt="Mobirise Website Builder" loading="lazy">
+                </div>
+                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1">LOCK-iN</h1>
+                
+                
+                <h2 class="mbr-title-2 mbr-fonts-style mb-3 display-5">LOCK-iN gives you a good partner who helps you focus on your goals rather than your attractive phone.</h2>
+                
+                <p class="mbr-text mbr-fonts-style display-7">LOCK-iN is a service that helps individuals struggling with phone addiction achieve their goals by providing a limited-use phone that allows them to stay focused and avoid distractions. The phones provided by LOCK-iN are designed specifically for task-oriented use, featuring features such as high-quality cameras or bright tent lighting. 
+<br>
+<br>By locking away their primary phone and using one of these specialized phones instead, users can break free from the constant pull of addictive screens and stay focused on their priorities. In this way, LOCK-iN serves as a valuable resource for those seeking to overcome phone addiction and live more fulfilling lives.<br></p>
+                    
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features15 cid-tEXXg4bKtJ" id="features16-c4">
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    <div class="container">
+        <div class="content-wrapper container-fluid">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 col-lg-5">
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style display-2">Product 3D Model</h6>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                            <br>With a 3D model, you can explore the form from different angles and examine every design detail. You can also use your smartphone to visit the website and try the AR mode, which lets you place the model in real-world settings.</p>
+                        
+
+                    </div>
+                </div>
+                <div class="col-12 col-lg-5">
+                    <div class="image-wrapper text-center text-lg-end">
+                        <model-viewer src="assets/models/lock-in.glb" ar="" ar-modes="webxr scene-viewer quick-look" camera-controls="" poster="poster.webp" shadow-intensity="1" auto-rotate=""> </model-viewer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    
+
+    
+</section>
+
+<section class="mbr-section article content1 cid-tEXXg4nvOI" id="custom-html-c5">
+
+     
+    
+</section>
+
+<section data-bs-version="5.1" class="content14 cid-tEXXg4wesP" id="content14-c6">
+    
+
+    
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                    <h3 class="mbr-section-title mbr-fonts-style mb-4 display-5">
+                        <strong>About this project</strong></h3>
+                <ul class="list mbr-fonts-style display-7">
+                    <li><strong>My role : Individual</strong><br>User research / User experience / Industrial design</li>
+                    <li><strong>Main tools involved</strong><br>Fusion360, Keyshot, Figma</li>
+                    <li><strong>Project duration</strong><br>Rapid design : 4 days / Full UX prototype : 3 days</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEXXg4GafD" id="content5-c7">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Project Achievements</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Project for me getting the 2nd place of 2022&nbsp;MOE Scholarship Program for Overseas Study in Arts and Design<br>&nbsp;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEXXg4RZxi" id="content5-c8">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    Problem background</h3>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">People feel anxious without their phones</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    Many people today have become addicted to their phones, spending all day on them and potentially hindering their ability to achieve their goals. It can be difficult to completely cut someone off from using their phone, and attempting to change the habit of excessive smartphone use can lead to anxiety.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content9 cid-tEY9tNAeW7" id="content9-cx">
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="counter-container col-md-12 col-lg-9">
+                <h4 class="mbr-section-title mbr-fonts-style mb-4 display-2">Research : The origin of Phone Addiction</h4>
+                <div class="mbr-text mbr-fonts-style display-7">
+                    <ol>
+                        <li><strong>Mental issues : Nomophobia - </strong>Nomophobia is the fear of being without a phone or unable to use it. This can happen because people rely on their devices for information and social connections, so it's normal to worry about losing them.</li>
+                        <li><strong>Escaping : More confidence online - </strong>Some people may feel more confident and have more relationships online than in reality, leading them to escape into the virtual world and avoid dealing with the realities of their life.&nbsp;</li>
+                        <li><strong>Biological reasons : Like cocaine -</strong> Receiving phone notifications can release dopamine in the brain, providing a feeling of pleasure similar to the effects of cocaine. This is because dopamine is a chemical that helps to regulate feelings of pleasure and reward in the body.</li><li><strong>Phones : Designed to keep engagement - </strong>Smartphones are becoming more powerful and can easily provide access to a vast amount of information. However, the technology is designed to keep users engaged and hooked on their devices. For example, the "pull to refresh" feature, which is commonly used in apps to update content, was inspired by casino games like slot machines.&nbsp;</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEY8oLi0KG" id="content5-cv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    Personas</h3>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEXXg5bOyT" id="image3-ca">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/persona-pain-point-1916x965.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEXXg5nZmu" id="content5-cb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    User journey map</h3>
+                
+                <p class="mbr-text mbr-fonts-style display-7">
+                     I used a journey map, which shows the steps and decisions made during a process, to identify main ideas and create a path for the design. This considers individual reactions and decisions during the quitting process.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEXXg5xkFB" id="image3-cc">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/journey2-1916x1077.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEXXg5KpJA" id="content5-cd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">Findings : solutions are polarized</h3>
+                
+                <p class="mbr-text mbr-fonts-style display-7">
+                    People may choose to quit their phones in order to engage in other activities, but the constant notifications and pressure from their phone can interrupt and interfere with these activities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEXXg66Hc1" id="content5-cf">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    Outcome</h3>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">What about exchanging the user's phone to a tool that helps other activities?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    Changing the phone into a tool that only provides necessary communication capabilities and helps with specific tasks may prevent excessive phone use and addiction. </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEXXg5U9oP" id="image3-ce">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/solutions-polarized-1916x2161.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEYf1cigaV" id="content5-cz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    The design idea</h3>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">An alternative for staying connected</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    People may feel anxious about being disconnected from others and missing important information, so a phone that has the most urgent social demands could help alleviate this anxiety.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEYdqDWRU3" id="content5-cy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Helps focusing on activities</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    The design should not only prevent phone use but also enhance people's experience of activities like studying, exercising, or camping. By providing another phone that supports and improves their engagement in these activities, the design can help individuals fully embrace their new, phone-free lifestyle.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEXXg7rbU6" id="image3-cm">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/expode-1916x1488.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEXXg7Db1E" id="content5-cn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">
+                    Scan to rent</h3>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Find the flashing box</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    The light indicator turns on when the block is available, and it flashes when the user searches for it using the app. The light indicator turns off when the block is not available, when it is occupied or undergoing maintenance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEXXg7NMiQ" id="image3-co">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/scan-to-use-1916x1240.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEXXg80PF6" id="content5-cp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">Phones to exchange</h3>
+                
+                <p class="mbr-text mbr-fonts-style display-7">The LOCK-iN service offers a variety of phones that are designed to support individuals in engaging in different activities. These phones function as expert partners, helping people to fully embrace and enjoy their chosen activities. Additionally, They are all designed:<br><br>1. Designed very durable.
+<br>2. Small and compact display
+<br>3. Can be used with one ha
+<br>4. Grayscaled screen, except when using the camera.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEXXg8afCX" id="image3-cq">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/phones-1916x1078.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEYg5EI0cV" id="content5-d0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">Customize the experience</h3>
+                
+                <p class="mbr-text mbr-fonts-style display-7">The app allows users to customize their preferences, enabling them to receive important notifications from essential contacts or applications. This way, it helps alleviate user anxiety about missing crucial notifications while also limiting phone usage time.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEYitE15PA" id="content5-d2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Grayscale design</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    The user interface of the app was designed in grayscale, as research has shown that this can reduce the temptation to use the phone excessively.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEXXg8y2sD" id="image3-cs">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/app-1916x865.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header9 cid-tEZwGOxxB3" id="header9-ex">
+
+    
+
+    
+    
+
+    <div class="text-center container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                
+                
+                
+                <div class="mbr-section-btn mt-3"><a class="btn btn-black display-4" href="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fn1XY8fEJmwt2pY8R11ebXj%2FLOCK-iN%3Ftype%3Ddesign%26node-id%3D2%253A24%26t%3D4nrzVZQIuAesFGKv-1" target="_blank">Try prototype</a>
+                    <a class="btn btn-black display-4" href="https://www.figma.com/file/n1XY8fEJmwt2pY8R11ebXj/LOCK-iN?type=design&node-id=2%3A24&t=4nrzVZQIuAesFGKv-1" target="_blank">View Prototype on Figma</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tEYilg8FGa" id="content5-d1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 display-2">Design process</h3>
+                
+                <p class="mbr-text mbr-fonts-style display-7">The design process consist of multiple tools and methods, including:<br><br>1. Making mockups<br>2. Drawing quick rough sketches<br>3. 3D modeling with Fusion 360<br>4. APP prototyping with Figma<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tEYiNCx9F2" id="image3-d3">
+    
+
+    
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="image-wrapper">
+                    <img src="assets/images/design-process-2-1916x1086.webp" alt="Mobirise Website Builder" loading="lazy">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="footer7 cid-tF10wNU9v1" once="footers" id="footer7-gn">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7">Design and edited by Hantus Chen<br>@H.C Design 2023</p>
+            </div>
+        </div>
+    </div>
+</section><section><a href="https://mobiri.se"></a><a href="https://mobiri.se"></a></section><script src="assets/witsec-jquery-3.5.1/jquery-3.5.1.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  
+  
+  <input name="animation" type="hidden">
+  </body>
+</html>

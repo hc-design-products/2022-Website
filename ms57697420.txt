@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "hc-design.xyz",
+  "Id": "f122f9c8-756f-4531-b7d9-fc0726d0cb48"
+}
